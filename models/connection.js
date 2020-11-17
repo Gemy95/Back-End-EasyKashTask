@@ -19,10 +19,10 @@ const connection = new Sequelize(DBName, DBUsername, DBpassword, {
 });
 connection
   .authenticate()
-  .then(function() {
+  .then(()=> {
     console.log('DB Connection has been established successfully...');
   })
-  .catch(function(error) {
+  .catch((error)=> {
     console.log('Unable to connect to the database:', error);
   });
 

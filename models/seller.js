@@ -43,7 +43,7 @@ let seller = sequelize.define('seller', {
     timestamps: false
   });
 
-  seller.associate = function(models) {
+  seller.associate = (models)=> {
     models.seller.hasMany(models.transaction,{foreignKey: 'seller_id',as: 'makeTrasnsactions',targetkey:'transaction_id'});  
    }
 

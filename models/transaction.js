@@ -49,7 +49,7 @@ let transaction = sequelize.define('transaction', {
     ]
   });
 
-  transaction.associate = function(models) {
+  transaction.associate = (models)=> {
     models.transaction.belongsTo(models.seller,{foreignKey: 'seller_id',as: 'makeTrasnsactions',targetkey:'transaction_id'});  
    }
 
