@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const sequelize = require ('./connection');
 
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('transaction', {
+let transaction = sequelize.define('transaction', {
     transaction_id: {
       autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
@@ -48,4 +48,12 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-};
+
+  transaction.associate = function(models) {
+    models.transaction.belongsTo(models.seller,{foreignKey: 'seller_id',as: 'makeTrasnsactions',targetkey:'transaction_id'});  
+   }
+
+  module.exports= transaction;
+
+
+

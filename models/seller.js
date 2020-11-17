@@ -1,10 +1,12 @@
-const Sequelize = require('sequelize');
+const DataTypes = require('sequelize');
+const sequelize = require ('./connection');
 
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('seller', {
+let seller = sequelize.define('seller', {
     seller_id: {
+      autoIncrement: true,
       type: DataTypes.INTEGER.UNSIGNED,
-      allowNull: false
+      allowNull: false,
+      primaryKey: true
     },
     first_name: {
       type: DataTypes.STRING(30),
@@ -29,15 +31,24 @@ module.exports = function(sequelize, DataTypes) {
     created_at: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
     },
     updated_at: {
       type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      defaultValue: DataTypes.literal('CURRENT_TIMESTAMP')
     }
   }, {
     tableName: 'seller',
     timestamps: false
   });
-};
+
+  seller.associate = function(models) {
+    models.seller.hasMany(models.transaction,{foreignKey: 'seller_id',as: 'makeTrasnsactions',targetkey:'transaction_id'});  
+   }
+
+   module.exports = seller;
+
+
+
+
