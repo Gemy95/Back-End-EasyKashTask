@@ -7,7 +7,7 @@ module.exports.getUserTransactions = async (seller_id,current_page,per_page)=>{
      transaction:result.rows,
      paging: {
         total: Math.ceil(result.count/per_page),
-        current_page: current_page,
+        current_page: parseInt(current_page),
         per_page: result.rows.length
       }
  }
