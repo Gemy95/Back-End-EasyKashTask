@@ -13,6 +13,16 @@ class TransactionRoute {
     }
 
     public routes(router: Router): void {
+    /**
+   * Display transcation for user 
+   * @route GET /API/transaction
+   * @group EasyKashTask
+   * @param {string} seller_id.query.required 
+   * @param {string} page.query 
+   * @param {string} per_page.query 
+   * @returns {object} 200 -Transctions retrieved successfully
+   * @returns {Error}  default - Unexpected error
+    */   
         router.get(
             '/transaction',
             //this.transactionValidation.validateUserTransactions,
