@@ -2,6 +2,7 @@ const createError = require('http-errors');
 import express from 'express'
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const cors = require('cors');
 const app: express.Application = express();
 import transactionRoute from "./routes/transactionRoute";
 
@@ -10,6 +11,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors('*'));
 
 const expressSwagger = require("express-swagger-generator")(app);
 const swaggerConfig = require("./config/swaggerConfig");
