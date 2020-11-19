@@ -32,4 +32,4 @@ app.use(function (err:any, req: express.Request, res: express.Response) {
   res.json({ error: err })
 });
 
-module.exports = app;
+export default app;
