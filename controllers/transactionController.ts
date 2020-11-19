@@ -1,7 +1,9 @@
-const transactionService = require ('../services/transactionService');
-const { validationResult } = require("express-validator");
+import transactionService from '../services/transactionService';
+import { validationResult } from "express-validator";
+import { Request, Response } from 'express';
 
-module.exports.getUserTransactions = async (req,res)=>{
+export default class TransactionController {
+public getUserTransactions = async (req:Request,res:Response)=>{
 try{
     const errors = validationResult(req);
      if (!errors.isEmpty())
@@ -11,4 +13,6 @@ try{
 }catch(error){
    res.status(400).json({"message":error.message});
   }
+}
+
 }

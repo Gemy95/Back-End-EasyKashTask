@@ -1,7 +1,8 @@
-const { query, body } = require("express-validator");
-let sellerModel= require("../models/seller");
+import { query } from 'express-validator';
+import sellerModel from "../models/seller/Seller";
 
-module.exports.validateUserTransactions = () => {
+export default class TransactionValidation {
+public validateUserTransactions = () => {
     return  [
           query("per_page").isLength({ min: 1 }).withMessage("invalid minimum per page length 1").not().isEmpty().withMessage("required per_page"),
           query("page").isLength({ min: 1 }).withMessage("invalid minimum per page length 1").not().isEmpty().withMessage("required page"),
@@ -16,3 +17,4 @@ module.exports.validateUserTransactions = () => {
               })
         ];
   };
+}

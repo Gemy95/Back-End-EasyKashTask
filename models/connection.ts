@@ -26,4 +26,4 @@ connection
     console.log('Unable to connect to the database:', error);
   });
 
-module.exports = connection;
+export default connection;
