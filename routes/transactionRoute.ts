@@ -25,7 +25,7 @@ class TransactionRoute {
     */   
         router.get(
             '/transaction',
-            //this.transactionValidation.validateUserTransactions,
+            this.transactionValidation.validateUserTransactions(),
             this.transactionController.getUserTransactions
         );
     }
