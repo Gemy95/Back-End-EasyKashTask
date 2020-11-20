@@ -15,7 +15,7 @@ For running application:-
 
 2- npm i (it will install all needed dependancies).
 
-3- npm build (for converting typescript files to dist directory bundel javascript files).
+3- npm run build (for converting typescript files to dist directory bundel javascript files).
 
 4- npm start (it will run application as nodemon).
 
